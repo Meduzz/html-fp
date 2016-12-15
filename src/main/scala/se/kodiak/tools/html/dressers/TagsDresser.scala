@@ -1,6 +1,6 @@
-package se.chimps.tools.html.dressers
+package se.kodiak.tools.html.dressers
 
-import se.chimps.tools.html.Tags.Tag
+import se.kodiak.tools.html.Tags.Tag
 
 class TagsDresser(tags:List[Tag]) {
 

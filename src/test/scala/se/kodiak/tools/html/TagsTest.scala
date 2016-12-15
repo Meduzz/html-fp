@@ -1,9 +1,9 @@
-package se.chimps.tools.html
+package se.kodiak.tools.html
 
 import org.scalatest.FunSpec
-import se.chimps.tools.html.Tags._
-import se.chimps.tools.html.Attributes._
-import se.chimps.tools.html.Implicits._
+import Tags._
+import Attributes._
+import Implicits._
 
 class TagsTest extends FunSpec {
 

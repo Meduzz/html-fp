@@ -1,7 +1,7 @@
-package se.chimps.tools.html
+package se.kodiak.tools.html
 
-import se.chimps.tools.html.Tags.Tag
-import se.chimps.tools.html.dressers.{StringDresser, TagDresser, TagsDresser}
+import se.kodiak.tools.html.Tags.Tag
+import se.kodiak.tools.html.dressers.{StringDresser, TagDresser, TagsDresser}
 
 object Implicits {
 

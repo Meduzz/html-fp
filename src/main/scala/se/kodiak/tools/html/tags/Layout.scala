@@ -1,6 +1,6 @@
-package se.chimps.tools.html.tags
+package se.kodiak.tools.html.tags
 
-import se.chimps.tools.html.Tags._
+import se.kodiak.tools.html.Tags._
 
 trait Layout {
 

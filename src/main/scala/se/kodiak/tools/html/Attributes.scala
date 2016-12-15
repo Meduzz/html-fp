@@ -1,4 +1,4 @@
-package se.chimps.tools.html
+package se.kodiak.tools.html
 
 object Attributes {
 

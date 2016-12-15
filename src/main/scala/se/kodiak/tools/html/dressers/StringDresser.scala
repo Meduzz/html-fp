@@ -1,6 +1,6 @@
-package se.chimps.tools.html.dressers
+package se.kodiak.tools.html.dressers
 
-import se.chimps.tools.html.Tags._
+import se.kodiak.tools.html.Tags._
 
 class StringDresser(input:String) {
 

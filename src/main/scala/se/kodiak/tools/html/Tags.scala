@@ -1,6 +1,6 @@
-package se.chimps.tools.html
+package se.kodiak.tools.html
 
-import se.chimps.tools.html.tags.{Base, Form, Layout}
+import se.kodiak.tools.html.tags.{Base, Form, Layout}
 
 object Tags extends Base with Layout with Form {
 
