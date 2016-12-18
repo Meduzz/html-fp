@@ -8,13 +8,13 @@ import Implicits._
 class TagsTest extends FunSpec {
 
 	describe("""the api "iz nice"...""") {
-		val textHtml = html()(
-			head()(title("Hello there!")),
-			body() {
-				Custom.curry("h1")(Map()) {
-					text("Hello there!")
-				}
-			}
+		val textHtml = html().children(
+			head().child(
+				title("Hello there!")
+			) &
+			body().child(
+				Custom.build("h1", Map()).child(text("Hello there!"))
+			)
 		)
 
 		// TODO wont compile without dots and parantheses...
@@ -22,9 +22,13 @@ class TagsTest extends FunSpec {
 			"got root?".ts
 		}
 
-		val include = script(Map("src" -> "some_url.js")) {
-			emptyWithCloseTag()
-		}
+		val include = script(Map("src" -> "some_url.js")).child(emptyWithCloseTag())
+
+		val data = Seq(1,2,3)
+		val list = ul().children(
+			li().child(text("Numbers")) &
+			data.map(i => li().child(text(s"$i"))).toList
+		)
 
 		it("I mean, really nice...ish") {
 			val expected = """<html><head><title>Hello there!</title></head><body><h1>Hello there!</h1></body></html>"""
@@ -39,6 +43,11 @@ class TagsTest extends FunSpec {
 		it("can do empty tags") {
 			val expected = """<script src="some_url.js"></script>"""
 			assert(include.render(0).equals(expected), s"script was not rendered as intended. Was (${include.render(0)})")
+		}
+
+		it("generating tags from data are possible") {
+			val expected = "<ul><li>Numbers</li><li>1</li><li>2</li><li>3</li></ul>"
+			assert(list.render(0).equals(expected), s"Ul did not match the expected output. Was (${list.render(0)}).")
 		}
 	}
 }
