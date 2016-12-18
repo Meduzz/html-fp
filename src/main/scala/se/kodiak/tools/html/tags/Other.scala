@@ -2,7 +2,7 @@ package se.kodiak.tools.html.tags
 
 import se.kodiak.tools.html.Tags._
 
-trait Layout {
+trait Other {
 
 	def ul(attributes:Map[String, String] = Map())(func:()=>List[Tag]):Tag = {
 		Custom("ul", attributes, func())

@@ -1,8 +1,8 @@
 package se.kodiak.tools.html
 
-import se.kodiak.tools.html.tags.{Base, Form, Layout}
+import se.kodiak.tools.html.tags.{Base, Form, Other}
 
-object Tags extends Base with Layout with Form {
+object Tags extends Base with Other with Form {
 
 	trait Tag {
 		def render(indent:Int):String
@@ -69,6 +69,8 @@ object Tags extends Base with Layout with Form {
 		def apply(name:String, attributes:Map[String, String] = Map(), children:List[Tag]):Tag = {
 			HtmlTag(name, attributes, children)
 		}
+
+		def default():List[Tag] = List()
 	}
 
 	def text(text:String):Tag = {
@@ -83,7 +85,7 @@ object Tags extends Base with Layout with Form {
 		Custom("div", attributes, func())
 	}
 
-	def img(attributes:Map[String, String] = Map())(func:()=>List[Tag]):Tag = {
+	def img(attributes:Map[String, String] = Map())(func:()=>List[Tag] = Custom.default):Tag = {
 		Custom("img", attributes, func())
 	}
 
@@ -99,7 +101,15 @@ object Tags extends Base with Layout with Form {
 		Custom("script", attributes, func())
 	}
 
-	def a(attributes:Map[String, String] = Map())(func:()=>List[Tag]):Tag = {
+	def atag(attributes:Map[String, String] = Map())(func:()=>List[Tag]):Tag = {
 		Custom("a", attributes, func())
 	}
+
+	def a(label:String, attributes:Map[String, String] = Map()):Tag = {
+		Custom("a", attributes, List(text(label)))
+	}
+
+	def empty():List[Tag] = List()
+
+	def emptyWithCloseTag():List[Tag] = List(text(""))
 }

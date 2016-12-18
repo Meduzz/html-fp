@@ -1,6 +1,6 @@
 package se.kodiak.tools.html.tags
 
-import se.kodiak.tools.html.Tags.{Custom, Tag}
+import se.kodiak.tools.html.Tags.{Custom, Tag, text}
 
 trait Base {
 
@@ -16,8 +16,8 @@ trait Base {
 		Custom("head", attributes, children)
 	}
 
-	def title(attributes:Map[String, String] = Map())(children:List[Tag]):Tag = {
-		Custom("title", attributes, children)
+	def title(title:String, attributes:Map[String, String] = Map()):Tag = {
+		Custom("title", attributes, List(text(title)))
 	}
 
 }

@@ -10,9 +10,7 @@ class TagsTest extends FunSpec {
 	describe("""the api "iz nice"...""") {
 		val textHtml = html() {
 			head() {
-				title() {
-					text("Hello there!") $
-				} $
+				title("Hello there!") $
 			} &
 			body() {
 				Custom("h1")(Map()) {
@@ -35,6 +33,15 @@ class TagsTest extends FunSpec {
 
 			val expected = """<h1 id="header" class="left black">got root?</h1>"""
 			assert(h1.render(0).equals(expected), s"The rendered result did not match.")
+		}
+
+		it("can do empty tags") {
+			val include = script(Map("src" -> "some_url.js")) {
+				emptyWithCloseTag // <- method reference.
+			}
+
+			val expected = """<script src="some_url.js"></script>"""
+			assert(include.render(0).equals(expected), s"script was not rendered as intended. Was (${include.render(0)})")
 		}
 
 		it("it sure can look better") {
