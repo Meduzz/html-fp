@@ -4,16 +4,16 @@ import se.kodiak.tools.html.Tags.{Custom, Tag, text}
 
 trait Base {
 
-	def html(attributes:Map[String, String] = Map())(children:List[Tag]):Tag = {
-		Custom("html", attributes, children)
+	def html(attributes:Map[String, String] = Map())(children:Tag*):Tag = {
+		Custom("html", attributes, children.toList)
 	}
 
-	def body(attributes:Map[String, String] = Map())(func:()=>List[Tag]):Tag = {
-		Custom("body", attributes, func())
+	def body(attributes:Map[String, String] = Map())(children:Tag*):Tag = {
+		Custom("body", attributes, children.toList)
 	}
 
-	def head(attributes:Map[String, String] = Map())(children:List[Tag]):Tag = {
-		Custom("head", attributes, children)
+	def head(attributes:Map[String, String] = Map())(children:Tag*):Tag = {
+		Custom("head", attributes, children.toList)
 	}
 
 	def title(title:String, attributes:Map[String, String] = Map()):Tag = {

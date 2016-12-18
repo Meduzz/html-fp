@@ -1,6 +1,6 @@
 name := "html-fp"
 
-version := "20161218"
+version := "20161218-1"
 
 scalaVersion := "2.11.7"
 

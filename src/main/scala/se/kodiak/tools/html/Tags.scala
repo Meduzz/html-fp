@@ -58,19 +58,13 @@ object Tags extends Base with Other with Form {
 	}
 
 	object Custom {
-		def apply(name:String):(Map[String, String]) => (() => List[Tag]) => Tag = (attributes) => (func) => {
-			HtmlTag(name, attributes, func())
-		}
-
-		def apply(name:String, attributes:Map[String, String], func:()=>List[Tag]):Tag = {
-			HtmlTag(name, attributes, func())
+		def curry(name:String)(attributes: Map[String, String])(children:Tag*):Tag = {
+			HtmlTag(name, attributes, children.toList)
 		}
 
 		def apply(name:String, attributes:Map[String, String] = Map(), children:List[Tag]):Tag = {
 			HtmlTag(name, attributes, children)
 		}
-
-		def default():List[Tag] = List()
 	}
 
 	def text(text:String):Tag = {
@@ -81,35 +75,33 @@ object Tags extends Base with Other with Form {
 		TextTag(input.toString)
 	}
 
-	def div(attributes:Map[String, String] = Map())(func:()=>List[Tag]):Tag = {
-		Custom("div", attributes, func())
+	def div(attributes:Map[String, String] = Map())(children:Tag*):Tag = {
+		Custom("div", attributes, children.toList)
 	}
 
-	def img(attributes:Map[String, String] = Map())(func:()=>List[Tag] = Custom.default):Tag = {
-		Custom("img", attributes, func())
+	def img(attributes:Map[String, String] = Map())(children:Tag*):Tag = {
+		Custom("img", attributes, children.toList)
 	}
 
-	def span(attributes:Map[String, String] = Map())(func:()=>List[Tag]):Tag = {
-		Custom("span", attributes, func())
+	def span(attributes:Map[String, String] = Map())(children:Tag*):Tag = {
+		Custom("span", attributes, children.toList)
 	}
 
-	def p(attributes:Map[String, String] = Map())(func:()=>List[Tag]):Tag = {
-		Custom("p", attributes, func())
+	def p(attributes:Map[String, String] = Map())(children:Tag*):Tag = {
+		Custom("p", attributes, children.toList)
 	}
 
-	def script(attributes:Map[String, String] = Map())(func:()=>List[Tag]):Tag = {
-		Custom("script", attributes, func())
+	def script(attributes:Map[String, String] = Map())(children:Tag*):Tag = {
+		Custom("script", attributes, children.toList)
 	}
 
-	def atag(attributes:Map[String, String] = Map())(func:()=>List[Tag]):Tag = {
-		Custom("a", attributes, func())
+	def atag(attributes:Map[String, String] = Map())(children:Tag*):Tag = {
+		Custom("a", attributes, children.toList)
 	}
 
 	def a(label:String, attributes:Map[String, String] = Map()):Tag = {
 		Custom("a", attributes, List(text(label)))
 	}
 
-	def empty():List[Tag] = List()
-
-	def emptyWithCloseTag():List[Tag] = List(text(""))
+	def emptyWithCloseTag():Tag = text("")
 }

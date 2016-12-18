@@ -4,40 +4,40 @@ import se.kodiak.tools.html.Tags._
 
 trait Other {
 
-	def ul(attributes:Map[String, String] = Map())(func:()=>List[Tag]):Tag = {
-		Custom("ul", attributes, func())
+	def ul(attributes:Map[String, String] = Map())(children:Tag*):Tag = {
+		Custom("ul", attributes, children.toList)
 	}
 
-	def li(attributes:Map[String, String] = Map())(func:()=>List[Tag]):Tag = {
-		Custom("li", attributes, func())
+	def li(attributes:Map[String, String] = Map())(children:Tag*):Tag = {
+		Custom("li", attributes, children.toList)
 	}
 
-	def table(attributes:Map[String, String] = Map())(func:()=>List[Tag]):Tag = {
-		Custom("table", attributes, func())
+	def table(attributes:Map[String, String] = Map())(children:Tag*):Tag = {
+		Custom("table", attributes, children.toList)
 	}
 
-	def tr(attributes:Map[String, String] = Map())(func:()=>List[Tag]):Tag = {
-		Custom("tr", attributes, func())
+	def tr(attributes:Map[String, String] = Map())(children:Tag*):Tag = {
+		Custom("tr", attributes, children.toList)
 	}
 
-	def td(attributes:Map[String, String] = Map())(func:()=>List[Tag]):Tag = {
-		Custom("td", attributes, func())
+	def td(attributes:Map[String, String] = Map())(children:Tag*):Tag = {
+		Custom("td", attributes, children.toList)
 	}
 
-	def th(attributes:Map[String, String] = Map())(func:()=>List[Tag]):Tag = {
-		Custom("tr", attributes, func())
+	def th(attributes:Map[String, String] = Map())(children:Tag*):Tag = {
+		Custom("tr", attributes, children.toList)
 	}
 
-	def thead(attributes:Map[String, String] = Map())(func:()=>List[Tag]):Tag = {
-		Custom("thead", attributes, func())
+	def thead(attributes:Map[String, String] = Map())(children:Tag*):Tag = {
+		Custom("thead", attributes, children.toList)
 	}
 
-	def tbody(attributes:Map[String, String] = Map())(func:()=>List[Tag]):Tag = {
-		Custom("tbody", attributes, func())
+	def tbody(attributes:Map[String, String] = Map())(children:Tag*):Tag = {
+		Custom("tbody", attributes, children.toList)
 	}
 
-	def tfoot(attributes:Map[String, String] = Map())(func:()=>List[Tag]):Tag = {
-		Custom("tfoot", attributes, func())
+	def tfoot(attributes:Map[String, String] = Map())(children:Tag*):Tag = {
+		Custom("tfoot", attributes, children.toList)
 	}
 
 }

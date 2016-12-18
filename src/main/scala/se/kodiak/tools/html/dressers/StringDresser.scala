@@ -9,7 +9,7 @@ class StringDresser(input:String) {
 		* @param attributes the tags attributes.
 		* @return returns a Tag
 		*/
-	def ~(attributes:Map[String, String]):(()=>List[Tag])=>Tag = Custom(input)(attributes)
+	def ~(attributes:Map[String, String]):(List[Tag])=>Tag = Custom.curry(input)(attributes)
 
 	/**
 		* Path builder alias continued.
@@ -25,9 +25,15 @@ class StringDresser(input:String) {
 	def t:Tag = text(input)
 
 	/**
+		* Alias to create a list with one text tag out of this string.
+		* @return returns a List[Tag]
+		*/
+	def ts:List[Tag] = List(text(input))
+
+	/**
 		* Custom tag with empty attributes alias.
 		* @return returns a Tag, eventually.
 		*/
-	def ~():(() => List[Tag]) => Tag = Custom(input)(Map())
+	def ~():(List[Tag]) => Tag = Custom.curry(input)(Map())
 
 }
